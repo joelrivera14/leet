@@ -15,6 +15,6 @@ public:
                 ++left;
             }
         }
-        return {0,0};
+        return {};
     }
 };
