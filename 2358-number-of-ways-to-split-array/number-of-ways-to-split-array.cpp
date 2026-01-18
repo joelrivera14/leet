@@ -1,18 +1,16 @@
 class Solution {
 public:
     int waysToSplitArray(vector<int>& nums) {
-        int n  = nums.size();
-
+        int n = nums.size();
         vector<long long> prefix = {nums[0]};
-        for(int i = 1; i<n; ++i){
-            prefix.push_back(nums[i] + prefix.back());
+        for(int i = 1; i < n; ++i){
+            prefix.push_back(nums[i]+prefix.back());
         }
-
         int ans = 0;
-        for(int i = 0; i<n-1; ++i){
+        for(int i = 0; i<n-1;++i){
             long long leftSide = prefix[i];
             long long rightSide = prefix.back()-prefix[i];
-            if(leftSide>=rightSide){
+            if(leftSide >= rightSide){
                 ++ans;
             }
         }
