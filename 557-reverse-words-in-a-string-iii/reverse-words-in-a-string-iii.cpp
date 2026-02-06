@@ -1,23 +1,18 @@
 class Solution {
 public:
     string reverseWords(string s) {
-        int lSI = -1;
-        int size = s.size();
-        for(int strIndex = 0; strIndex <= size; ++strIndex){
-            if(strIndex == size || s[strIndex] == ' '){
-                int start = lSI + 1;
-                int end = strIndex-1;
-                while(start<end){
-                    char t = s[start];
-                    s[start] = s[end];
-                    s[end] = t;
-                    ++start;
-                    --end;
+        int l = 0; int r = 0;
+        for(int i = 0; i<=s.size(); ++i){
+            if(i == s.size()|| s[i]==' '){
+                r = i-1;
+                while(l<r){
+                    swap(s[l],s[r]);
+                    ++l;
+                    --r;
                 }
-                lSI = strIndex;
+                l=i+1;
             }
-        }
-        return s;
-        
+        }   
+    return s;
     }
 };
