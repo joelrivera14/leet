@@ -5,5 +5,4 @@ class Solution:
         for g in gain:
             a += g
             m = max(a,m)
-        
         return m        
