@@ -9,9 +9,7 @@ public:
 
         for(auto[key,value] : count){
             if(value == 1){
-                if (key>largestUniqueNum){
-                    largestUniqueNum = key;
-                }
+                largestUniqueNum=max(largestUniqueNum,key);
             }
         }
         return largestUniqueNum;
