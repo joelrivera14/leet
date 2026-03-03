@@ -7,7 +7,7 @@ public:
         }
         int largestUniqueNum = -1;
 
-        for(auto[key,value] : count){
+        for(auto&[key,value] : count){
             if(value == 1){
                 largestUniqueNum=max(largestUniqueNum,key);
             }
