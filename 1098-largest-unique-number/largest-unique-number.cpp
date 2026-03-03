@@ -2,7 +2,7 @@ class Solution {
 public:
     int largestUniqueNumber(vector<int>& nums) {
         unordered_map<int, int> count;
-        for(int n : nums){
+        for(int& n : nums){
             count[n]++;
         }
         int largestUniqueNum = -1;
