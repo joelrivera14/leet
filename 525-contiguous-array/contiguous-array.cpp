@@ -13,7 +13,7 @@ public:
                 counter--;
             }
 
-            if(count.contains(counter)){
+            if(count.find(counter) != count.end()){
                 ans = max(ans, i-count[counter]);
             }
             else{
