@@ -2,7 +2,7 @@ class Solution {
 public:
     int maximumSum(vector<int>& nums) {
         unordered_map<int,int> sumKeys;
-        int ans = -1;
+        int ans = 0;
 
         for(int n : nums){
         int digitS = getDigitSum(n);
@@ -11,7 +11,7 @@ public:
             }
             sumKeys[digitS] = max(n,sumKeys[digitS]);
         }
-        return ans;
+        return ans == 0 ? -1:ans;
     }
 
     int getDigitSum(int num){
