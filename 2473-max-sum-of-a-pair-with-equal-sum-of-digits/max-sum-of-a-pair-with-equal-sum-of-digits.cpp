@@ -1,25 +1,25 @@
 class Solution {
 public:
     int maximumSum(vector<int>& nums) {
-        unordered_map<int,int> sumKeys;
-        int ans = 0;
+       unordered_map<int, int> count;
+       int ans = 0;
 
-        for(int n : nums){
-        int digitS = getDigitSum(n);
-            if(sumKeys.find(digitS) != sumKeys.end()){
-                ans = max(ans, n+sumKeys[digitS]);
-            }
-            sumKeys[digitS] = max(n,sumKeys[digitS]);
+       for(int n : nums){
+        int digSum = digitSum(n);
+        if(count.find(digSum) != count.end()){
+            ans = max(ans, n + count[digSum]);
         }
-        return ans == 0 ? -1:ans;
+        count[digSum] = max(count[digSum],n);
+       }
+       return ans==0 ? -1 : ans;
     }
 
-    int getDigitSum(int num){
-        int digitSum = 0;
-        while(num>0){
-            digitSum += num%10;
-            num/=10;
+    int digitSum(int n){
+        int dSum = 0;
+        while(n>0){
+            dSum += n%10;
+            n/=10;
         }
-        return digitSum;
+        return dSum;
     }
 };
