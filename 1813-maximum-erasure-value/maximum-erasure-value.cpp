@@ -12,8 +12,8 @@ public:
                 left++;
             }
             total += nums[right];
-            ans=max(ans, total);
             count[nums[right]]++;
+            ans=max(ans, total);
         }
 
         return ans;
