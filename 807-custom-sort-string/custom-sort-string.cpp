@@ -1,22 +1,24 @@
 class Solution {
 public:
     string customSortString(string order, string s) {
-        unordered_map<char,int>oMap;
-        string newStr ="";
-        string extraChar="";
-        for(int i = 0; i<order.size(); ++i){
-            oMap[order[i]] = i;
-        }
+        unordered_map<char,int> count;
+        string result = "";
+
         for(char& c : s){
-            if(oMap.contains(c)){
-                newStr += c;
-            }
-            else{extraChar +=c;}
+            count[c]++;
         }
-        //remember to sort, not optimal, this is nlogn
-        sort(newStr.begin(), newStr.end(), [&](const auto a, const auto b){
-            return oMap[a]<oMap[b];
-        });
-        return newStr+extraChar;
+        for(char& c : order){
+            while(count[c]>0){
+                result += c;
+                count[c]--;
+            }
+        }
+        for(auto& [key,value] : count){
+            while(count[key]>0){
+             result += key;
+             count[key]--;   
+            }
+        }
+        return result;
     }
 };
