@@ -13,7 +13,7 @@ public:
             }
             else{extraChar +=c;}
         }
-        //remember to sort
+        //remember to sort, not optimal, this is nlogn
         sort(newStr.begin(), newStr.end(), [&](const auto a, const auto b){
             return oMap[a]<oMap[b];
         });
