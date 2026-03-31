@@ -14,19 +14,18 @@ public:
         if(head == nullptr || head->next == nullptr){
             return head;
         }
-
-        ListNode* dummy = head->next;
-        ListNode* prev = nullptr;
-        while(head != nullptr && head->next != nullptr){
-            if(prev != nullptr){
-                prev->next = head->next;
-            }
-            prev = head;
-            ListNode* nextNode = head->next->next;
-            head->next->next = head;
-            head->next = nextNode;
-            head = nextNode;
+      ListNode* dummy = head->next;
+      ListNode* prev = nullptr;
+      while(head != nullptr && head->next != nullptr){
+        if(prev != nullptr){
+            prev->next = head->next;
         }
-        return dummy;
+        prev = head;
+        ListNode* nextNode = head->next->next;
+        head->next->next = head;
+        head->next = nextNode;
+        head = nextNode;
+      }
+      return dummy;
     }
 };
