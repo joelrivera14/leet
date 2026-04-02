@@ -22,9 +22,7 @@ public:
             slow = slow->next;
             fast = fast->next;
         }
-        int temp = slow->val;
-        slow->val = swapV->val;
-        swapV->val = temp;
+        swap(swapV->val,slow->val);
         return head;
     }
 };
