@@ -1,31 +1,33 @@
 class Solution {
 public:
     bool wordPattern(string pattern, string s) {
-        unordered_map<string, char> sMap;
         unordered_map<char, string> pMap;
-        vector<string> words;
+        unordered_map<string, char> sMap;
+        vector<string>words;
         string word = "";
 
-        for(int i = 0; i< s.size(); ++i){
-            if(s[i] == ' '){
+        for(char&c : s){
+            if(c == ' '){
                 words.push_back(word);
                 word = "";
-            } else{
-                word += s[i];
+            }
+            else{
+                word+=c;
             }
         }
         words.push_back(word);
-        
+
         if(words.size() != pattern.size()) return false;
 
-        for(int i = 0; i<pattern.size(); ++i){
-            char c = pattern[i];
+        for(int i = 0; i<words.size(); ++i){
+            char p = pattern[i];
             string w = words[i];
-            if(sMap.count(w) && sMap[w] != c) return false;
-            if(pMap.count(c) && pMap[c] != w) return false;
-            sMap[w] = c;
-            pMap[c] = w;
+            if(pMap.contains(p) && pMap[p] != w) return false;
+            if(sMap.contains(w) && sMap[w] != p) return false;
+            pMap[p] = w;
+            sMap[w] = p;
         }
         return true;
+
     }
 };
