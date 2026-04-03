@@ -2,19 +2,17 @@ class Solution {
 public:
     bool isValid(string s) {
         stack<char> brackets;
-        unordered_map<char,char>mapping {
+        unordered_map<char,char> mapping {
             {'(',')'},
             {'[',']'},
             {'{','}'}
         };
 
         for(char c : s){
-            if(mapping.contains(c)){
+            if(mapping.find(c) != mapping.end()){
                 brackets.push(c);
             }else{
-                if(brackets.empty() || mapping[brackets.top()] != c){
-                    return false;
-                }
+                if(brackets.empty() || mapping[brackets.top()] != c) return false;
                 brackets.pop();
             }
         }
