@@ -14,22 +14,21 @@ public:
         ListNode* fast = head;
         ListNode* slow = head;
         int maxV = 0;
-        while(fast != nullptr && fast->next != nullptr){
-            fast = fast->next->next;
+        while(fast && fast->next){
             slow = slow->next;
+            fast = fast->next->next;
         }
 
-        ListNode* current = slow;
         ListNode* prev = nullptr;
-        while(current != nullptr){
-            ListNode* nextNode = current->next;
-            current->next = prev;
-            prev = current;
-            current = nextNode;
+        while(slow){
+            ListNode* nextNode = slow->next;
+            slow->next = prev;
+            prev = slow;
+            slow = nextNode;
         }
 
-        while(prev!=nullptr){
-            maxV = max(maxV,prev->val+head->val);
+        while(prev){
+            maxV = max(maxV, head->val + prev->val);
             prev = prev->next;
             head = head->next;
         }
