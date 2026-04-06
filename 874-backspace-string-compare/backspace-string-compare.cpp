@@ -1,29 +1,19 @@
 class Solution {
 public:
     bool backspaceCompare(string s, string t) {
-        string newS = "";
-        string newT = "";
-
-        for(char c : s){
-            if( c == '#'){
-                if(!newS.empty()){
-                newS.pop_back();
-
+        return afterBackSpace(s) == afterBackSpace(t);
+    }
+    string afterBackSpace(string abs){
+        string ans = "";
+        for(char c : abs){
+            if(c == '#'){
+                if(!ans.empty()){
+                    ans.pop_back();
                 }
             }else{
-                newS.push_back(c);
+                ans.push_back(c);
             }
         }
-        for(char c : t){
-            if( c == '#'){
-                if(!newT.empty()){
-
-                newT.pop_back();
-                }
-            }else{
-                newT.push_back(c);
-            }
-        }
-        return newS == newT;
+        return ans;
     }
 };
